@@ -78,88 +78,22 @@ class ControlFlowAnalyzer:
         """
         Main analysis entry point.
         Returns control flow issues and graph visualization data.
-        
-        Args:
-            code: Source code as string
-            language: Programming language (python, javascript, typescript, etc.)
-            
-        Returns:
-            ControlFlowResult with issues and graph data
         """
         # Import here to avoid circular dependency
         from analyzers.universal_ast_analyzer import UniversalASTAnalyzer
         
-        tree = None  # Initialize for later use
+        tree = None
+        issues = []
         
         try:
-            # Use universal analyzer for supported languages
-            analyzer = UniversalASTAnalyzer(language)
-            
-            # Find infinite loops using universal analyzer
-            infinite_loops = analyzer.find_infinite_loops(code)
-            
-            # Find unreachable code using universal analyzer
-            unreachable = analyzer.find_unreachable_code(code)
-            
-            # Combine all issues
-            raw_issues = infinite_loops + unreachable
-            issues = []
-            for issue in raw_issues:
-                if isinstance(issue, dict):
-                    issues.append(ControlFlowIssue(
-                        type=issue.get('type', 'unknown'),
-                        line=issue.get('line', 0),
-                        description=issue.get('description', ''),
-                        severity=issue.get('severity', 'warning')
-                    ))
-                else:
-                    issues.append(issue)
-            
-            # For Python, also parse the tree for graph generation
-            if language.lower() == 'python':
-                try:
-                    tree = ast.parse(code)
-                    # Add python-specific pattern checks that universal analyzer misses
-                    py_issues = self._detect_infinite_loops(tree)
-                    for py_issue in py_issues:
-                        if py_issue.type != 'infinite_loop':  # Universal analyzer already finds these
-                            issues.append(py_issue)
-                except SyntaxError:
-                    pass
-            
+            tree, issues = self._analyze_supported_language(code, language, UniversalASTAnalyzer)
         except ValueError:
-            # Language not supported by universal analyzer, fall back to Python ast
-            try:
-                tree = ast.parse(code)
-            except SyntaxError:
-                # If code doesn't parse, return empty result
-                return ControlFlowResult(
-                    has_issues=False,
-                    issues=[],
-                    graph_nodes=[],
-                    graph_edges=[],
-                    mermaid_code=""
-                )
+            tree, issues = self._analyze_fallback(code)
             
-            issues = []
-            
-            # Detect infinite loops (Python fallback)
-            infinite_loops = self._detect_infinite_loops(tree)
-            issues.extend(infinite_loops)
-            
-            # Detect unreachable code (Python fallback)
-            unreachable = self._detect_unreachable_code(tree)
-            issues.extend(unreachable)
-        
-        # Generate graph for first issue found (MVP: one graph per analysis)
-        nodes = []
-        edges = []
-        if issues:
-            first_issue = issues[0]
-            nodes, edges = self._generate_graph_for_issue(tree, first_issue, code)
-        
+        nodes, edges = self._build_graph_for_first_issue(tree, issues, code)
         # Convert to Mermaid syntax
-        mermaid_code = self._generate_mermaid(nodes, edges)
+        generator = MermaidGenerator()
+        mermaid_code = generator.generate(nodes, edges)
         
         return ControlFlowResult(
             has_issues=len(issues) > 0,
@@ -168,6 +102,48 @@ class ControlFlowAnalyzer:
             graph_edges=edges,
             mermaid_code=mermaid_code
         )
+        
+    def _analyze_supported_language(self, code: str, language: str, UniversalASTAnalyzer) -> Tuple[Optional[ast.AST], List[ControlFlowIssue]]:
+        analyzer = UniversalASTAnalyzer(language)
+        raw_issues = analyzer.find_infinite_loops(code) + analyzer.find_unreachable_code(code)
+        
+        issues = []
+        for issue in raw_issues:
+            if isinstance(issue, dict):
+                issues.append(ControlFlowIssue(
+                    type=issue.get('type', 'unknown'),
+                    line=issue.get('line', 0),
+                    description=issue.get('description', ''),
+                    severity=issue.get('severity', 'warning')
+                ))
+            else:
+                issues.append(issue)
+                
+        tree = None
+        if language.lower() == 'python':
+            try:
+                tree = ast.parse(code)
+                for py_issue in self._detect_infinite_loops(tree):
+                    if py_issue.type != 'infinite_loop':
+                        issues.append(py_issue)
+            except SyntaxError:
+                pass
+                
+        return tree, issues
+        
+    def _analyze_fallback(self, code: str) -> Tuple[Optional[ast.AST], List[ControlFlowIssue]]:
+        try:
+            tree = ast.parse(code)
+        except SyntaxError:
+            return None, []
+            
+        issues = self._detect_infinite_loops(tree) + self._detect_unreachable_code(tree)
+        return tree, issues
+        
+    def _build_graph_for_first_issue(self, tree: Optional[ast.AST], issues: List[ControlFlowIssue], code: str) -> Tuple[List[CFGNode], List[CFGEdge]]:
+        if not issues:
+            return [], []
+        return self._generate_graph_for_issue(tree, issues[0], code)
     
     def _detect_infinite_loops(self, tree: ast.AST) -> List[ControlFlowIssue]:
         """Detect infinite loop patterns"""
@@ -418,7 +394,10 @@ class ControlFlowAnalyzer:
         
         return nodes, edges
     
-    def _generate_mermaid(self, nodes: List[CFGNode], edges: List[CFGEdge]) -> str:
+class MermaidGenerator:
+    """Helper class to generate Mermaid syntax from CFG nodes and edges."""
+    
+    def generate(self, nodes: List[CFGNode], edges: List[CFGEdge]) -> str:
         """Convert nodes and edges to Mermaid flowchart syntax"""
         if not nodes:
             return ""

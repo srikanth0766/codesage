@@ -1,0 +1,2543 @@
+{
+  "results": [
+    {
+      "smells": [],
+      "smell_count": 0,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.0,
+      "file": "backend/test_analyzer.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "long_method",
+          "display_name": "Long Method",
+          "confidence": 0.802,
+          "location": "ChatHandler._generate_response",
+          "start_line": 90,
+          "end_line": 159,
+          "metric_value": 58,
+          "threshold": 30,
+          "refactor_hint": "Extract sub-routines using the 'Extract Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "long_method",
+          "display_name": "Long Method",
+          "confidence": 0.646,
+          "location": "ChatHandler._build_context_prompt",
+          "start_line": 39,
+          "end_line": 88,
+          "metric_value": 42,
+          "threshold": 30,
+          "refactor_hint": "Extract sub-routines using the 'Extract Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.616,
+          "location": "ChatHandler._build_context_prompt",
+          "start_line": 39,
+          "end_line": 88,
+          "metric_value": 0.84,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.512,
+          "location": "ChatHandler._generate_response",
+          "start_line": 90,
+          "end_line": 159,
+          "metric_value": 0.71,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 4,
+      "high_confidence_count": 1,
+      "overall_smell_score": 0.802,
+      "file": "backend/chat_handler.py",
+      "failed": false
+    },
+    {
+      "smells": [],
+      "smell_count": 0,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.0,
+      "file": "backend/test_agent.py",
+      "failed": false
+    },
+    {
+      "smells": [],
+      "smell_count": 0,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.0,
+      "file": "backend/config.py",
+      "failed": false
+    },
+    {
+      "smells": [],
+      "smell_count": 0,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.0,
+      "file": "backend/test_ast_debug.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "deep_nesting",
+          "display_name": "Deep Nesting",
+          "confidence": 0.731,
+          "location": "traverse",
+          "start_line": 12,
+          "end_line": 37,
+          "metric_value": 5,
+          "threshold": 3,
+          "refactor_hint": "Flatten using early returns or extract nested blocks into separate methods.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "traverse",
+          "start_line": 12,
+          "end_line": 37,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 2,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.731,
+      "file": "backend/test_traverse.py",
+      "failed": false
+    },
+    {
+      "smells": [],
+      "smell_count": 0,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.0,
+      "file": "backend/test_python.py",
+      "failed": false
+    },
+    {
+      "smells": [],
+      "smell_count": 0,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.0,
+      "file": "backend/test_multi_language.py",
+      "failed": false
+    },
+    {
+      "smells": [],
+      "smell_count": 0,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.0,
+      "file": "backend/debug_analyzer.py",
+      "failed": false
+    },
+    {
+      "smells": [],
+      "smell_count": 0,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.0,
+      "file": "backend/test_agent_direct.py",
+      "failed": false
+    },
+    {
+      "smells": [],
+      "smell_count": 0,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.0,
+      "file": "backend/debug_orchestrator.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "deep_nesting",
+          "display_name": "Deep Nesting",
+          "confidence": 0.818,
+          "location": "ErrorDetectionModel.predict",
+          "start_line": 23,
+          "end_line": 51,
+          "metric_value": 6,
+          "threshold": 3,
+          "refactor_hint": "Flatten using early returns or extract nested blocks into separate methods.",
+          "severity": "warning"
+        },
+        {
+          "smell": "high_complexity",
+          "display_name": "High Cyclomatic Complexity",
+          "confidence": 0.646,
+          "location": "ErrorDetectionModel.predict",
+          "start_line": 23,
+          "end_line": 51,
+          "metric_value": 13,
+          "threshold": 10,
+          "refactor_hint": "Simplify branches: extract conditions, use polymorphism, or redesign logic.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 2,
+      "high_confidence_count": 1,
+      "overall_smell_score": 0.818,
+      "file": "backend/model.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "CodeReviewAgent.__init__",
+          "start_line": 50,
+          "end_line": 78,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "large_parameter_list",
+          "display_name": "Large Parameter List",
+          "confidence": 0.661,
+          "location": "CodeReviewAgent._build_success_result",
+          "start_line": 120,
+          "end_line": 129,
+          "metric_value": 7,
+          "threshold": 5,
+          "refactor_hint": "Introduce a Parameter Object or Builder pattern.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.642,
+          "location": "CodeReviewAgent._generate_summary",
+          "start_line": 266,
+          "end_line": 311,
+          "metric_value": 0.88,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "deep_nesting",
+          "display_name": "Deep Nesting",
+          "confidence": 0.622,
+          "location": "CodeReviewAgent._estimate_error_line",
+          "start_line": 226,
+          "end_line": 250,
+          "metric_value": 4,
+          "threshold": 3,
+          "refactor_hint": "Flatten using early returns or extract nested blocks into separate methods.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.619,
+          "location": "CodeReviewAgent._check_syntax",
+          "start_line": 161,
+          "end_line": 191,
+          "metric_value": 0.85,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "high_complexity",
+          "display_name": "High Cyclomatic Complexity",
+          "confidence": 0.599,
+          "location": "CodeReviewAgent._generate_summary",
+          "start_line": 266,
+          "end_line": 311,
+          "metric_value": 12,
+          "threshold": 10,
+          "refactor_hint": "Simplify branches: extract conditions, use polymorphism, or redesign logic.",
+          "severity": "warning"
+        },
+        {
+          "smell": "long_method",
+          "display_name": "Long Method",
+          "confidence": 0.587,
+          "location": "CodeReviewAgent._generate_summary",
+          "start_line": 266,
+          "end_line": 311,
+          "metric_value": 37,
+          "threshold": 30,
+          "refactor_hint": "Extract sub-routines using the 'Extract Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "god_class",
+          "display_name": "God Class (High WMC)",
+          "confidence": 0.574,
+          "location": "CodeReviewAgent",
+          "start_line": 39,
+          "end_line": 311,
+          "metric_value": 46,
+          "threshold": 40,
+          "refactor_hint": "Decompose complex methods and distribute responsibilities across smaller classes.",
+          "severity": "error"
+        }
+      ],
+      "smell_count": 8,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.731,
+      "file": "backend/agent_orchestrator.py",
+      "failed": false
+    },
+    {
+      "smells": [],
+      "smell_count": 0,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.0,
+      "file": "backend/test_error.py",
+      "failed": false
+    },
+    {
+      "smells": [],
+      "smell_count": 0,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.0,
+      "file": "backend/test_control_flow.py",
+      "failed": false
+    },
+    {
+      "smells": [],
+      "smell_count": 0,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.0,
+      "file": "backend/test_quick.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "lifespan",
+          "start_line": 38,
+          "end_line": 67,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "log_sprint",
+          "start_line": 386,
+          "end_line": 399,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "predict_sprint_risk",
+          "start_line": 403,
+          "end_line": 417,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "sprint_analytics",
+          "start_line": 421,
+          "end_line": 428,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.661,
+          "location": "chat",
+          "start_line": 227,
+          "end_line": 269,
+          "metric_value": 0.9,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "long_method",
+          "display_name": "Long Method",
+          "confidence": 0.622,
+          "location": "review_code",
+          "start_line": 177,
+          "end_line": 223,
+          "metric_value": 40,
+          "threshold": 30,
+          "refactor_hint": "Extract sub-routines using the 'Extract Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.609,
+          "location": "predict",
+          "start_line": 144,
+          "end_line": 173,
+          "metric_value": 0.83,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.609,
+          "location": "review_code",
+          "start_line": 177,
+          "end_line": 223,
+          "metric_value": 0.83,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.609,
+          "location": "analyze_smells",
+          "start_line": 291,
+          "end_line": 314,
+          "metric_value": 0.83,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.609,
+          "location": "refactor_code",
+          "start_line": 339,
+          "end_line": 355,
+          "metric_value": 0.83,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "long_method",
+          "display_name": "Long Method",
+          "confidence": 0.55,
+          "location": "chat",
+          "start_line": 227,
+          "end_line": 269,
+          "metric_value": 34,
+          "threshold": 30,
+          "refactor_hint": "Extract sub-routines using the 'Extract Method' refactoring.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 11,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.731,
+      "file": "backend/main.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "long_method",
+          "display_name": "Long Method",
+          "confidence": 0.646,
+          "location": "print_review_result",
+          "start_line": 50,
+          "end_line": 95,
+          "metric_value": 42,
+          "threshold": 30,
+          "refactor_hint": "Extract sub-routines using the 'Extract Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "high_complexity",
+          "display_name": "High Cyclomatic Complexity",
+          "confidence": 0.646,
+          "location": "print_review_result",
+          "start_line": 50,
+          "end_line": 95,
+          "metric_value": 13,
+          "threshold": 10,
+          "refactor_hint": "Simplify branches: extract conditions, use polymorphism, or redesign logic.",
+          "severity": "warning"
+        },
+        {
+          "smell": "deep_nesting",
+          "display_name": "Deep Nesting",
+          "confidence": 0.622,
+          "location": "print_review_result",
+          "start_line": 50,
+          "end_line": 95,
+          "metric_value": 4,
+          "threshold": 3,
+          "refactor_hint": "Flatten using early returns or extract nested blocks into separate methods.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 3,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.646,
+      "file": "backend/demo.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "long_method",
+          "display_name": "Long Method",
+          "confidence": 0.562,
+          "location": "SmellDetector._check_class_smells",
+          "start_line": 189,
+          "end_line": 226,
+          "metric_value": 35,
+          "threshold": 30,
+          "refactor_hint": "Extract sub-routines using the 'Extract Method' refactoring.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 1,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.562,
+      "file": "backend/analyzers/smell_detector.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "high_complexity",
+          "display_name": "High Cyclomatic Complexity",
+          "confidence": 0.832,
+          "location": "UniversalASTAnalyzer._find_javascript_infinite_loops",
+          "start_line": 155,
+          "end_line": 215,
+          "metric_value": 18,
+          "threshold": 10,
+          "refactor_hint": "Simplify branches: extract conditions, use polymorphism, or redesign logic.",
+          "severity": "warning"
+        },
+        {
+          "smell": "long_method",
+          "display_name": "Long Method",
+          "confidence": 0.76,
+          "location": "UniversalASTAnalyzer._find_javascript_infinite_loops",
+          "start_line": 155,
+          "end_line": 215,
+          "metric_value": 53,
+          "threshold": 30,
+          "refactor_hint": "Extract sub-routines using the 'Extract Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "deep_nesting",
+          "display_name": "Deep Nesting",
+          "confidence": 0.731,
+          "location": "UniversalASTAnalyzer._find_javascript_infinite_loops",
+          "start_line": 155,
+          "end_line": 215,
+          "metric_value": 5,
+          "threshold": 3,
+          "refactor_hint": "Flatten using early returns or extract nested blocks into separate methods.",
+          "severity": "warning"
+        },
+        {
+          "smell": "deep_nesting",
+          "display_name": "Deep Nesting",
+          "confidence": 0.731,
+          "location": "UniversalASTAnalyzer._js_has_break",
+          "start_line": 217,
+          "end_line": 235,
+          "metric_value": 5,
+          "threshold": 3,
+          "refactor_hint": "Flatten using early returns or extract nested blocks into separate methods.",
+          "severity": "warning"
+        },
+        {
+          "smell": "deep_nesting",
+          "display_name": "Deep Nesting",
+          "confidence": 0.731,
+          "location": "UniversalASTAnalyzer._find_python_unreachable",
+          "start_line": 265,
+          "end_line": 290,
+          "metric_value": 5,
+          "threshold": 3,
+          "refactor_hint": "Flatten using early returns or extract nested blocks into separate methods.",
+          "severity": "warning"
+        },
+        {
+          "smell": "deep_nesting",
+          "display_name": "Deep Nesting",
+          "confidence": 0.731,
+          "location": "UniversalASTAnalyzer._find_javascript_unreachable",
+          "start_line": 292,
+          "end_line": 324,
+          "metric_value": 5,
+          "threshold": 3,
+          "refactor_hint": "Flatten using early returns or extract nested blocks into separate methods.",
+          "severity": "warning"
+        },
+        {
+          "smell": "god_class",
+          "display_name": "God Class",
+          "confidence": 0.69,
+          "location": "UniversalASTAnalyzer",
+          "start_line": 31,
+          "end_line": 345,
+          "metric_value": 14,
+          "threshold": 10,
+          "refactor_hint": "Split the class by responsibility using the Single Responsibility Principle.",
+          "severity": "warning"
+        },
+        {
+          "smell": "high_complexity",
+          "display_name": "High Cyclomatic Complexity",
+          "confidence": 0.646,
+          "location": "UniversalASTAnalyzer._find_javascript_unreachable",
+          "start_line": 292,
+          "end_line": 324,
+          "metric_value": 13,
+          "threshold": 10,
+          "refactor_hint": "Simplify branches: extract conditions, use polymorphism, or redesign logic.",
+          "severity": "warning"
+        },
+        {
+          "smell": "deep_nesting",
+          "display_name": "Deep Nesting",
+          "confidence": 0.622,
+          "location": "UniversalASTAnalyzer._find_python_infinite_loops",
+          "start_line": 131,
+          "end_line": 153,
+          "metric_value": 4,
+          "threshold": 3,
+          "refactor_hint": "Flatten using early returns or extract nested blocks into separate methods.",
+          "severity": "warning"
+        },
+        {
+          "smell": "deep_nesting",
+          "display_name": "Deep Nesting",
+          "confidence": 0.622,
+          "location": "UniversalASTAnalyzer._check_js_block",
+          "start_line": 326,
+          "end_line": 345,
+          "metric_value": 4,
+          "threshold": 3,
+          "refactor_hint": "Flatten using early returns or extract nested blocks into separate methods.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.583,
+          "location": "UniversalASTAnalyzer._find_javascript_unreachable",
+          "start_line": 292,
+          "end_line": 324,
+          "metric_value": 0.8,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.542,
+          "location": "UniversalASTAnalyzer._find_javascript_infinite_loops",
+          "start_line": 155,
+          "end_line": 215,
+          "metric_value": 0.75,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.542,
+          "location": "UniversalASTAnalyzer._find_python_unreachable",
+          "start_line": 265,
+          "end_line": 290,
+          "metric_value": 0.75,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.512,
+          "location": "UniversalASTAnalyzer._check_js_block",
+          "start_line": 326,
+          "end_line": 345,
+          "metric_value": 0.71,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 14,
+      "high_confidence_count": 2,
+      "overall_smell_score": 0.832,
+      "file": "backend/analyzers/universal_ast_analyzer.py",
+      "failed": false
+    },
+    {
+      "smells": [],
+      "smell_count": 0,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.0,
+      "file": "backend/analyzers/__init__.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "ControlFlowResult.to_dict",
+          "start_line": 55,
+          "end_line": 71,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "deep_nesting",
+          "display_name": "Deep Nesting",
+          "confidence": 0.731,
+          "location": "ControlFlowAnalyzer._detect_unreachable_code",
+          "start_line": 191,
+          "end_line": 213,
+          "metric_value": 5,
+          "threshold": 3,
+          "refactor_hint": "Flatten using early returns or extract nested blocks into separate methods.",
+          "severity": "warning"
+        },
+        {
+          "smell": "deep_nesting",
+          "display_name": "Deep Nesting",
+          "confidence": 0.731,
+          "location": "MermaidGenerator._get_modified_variables",
+          "start_line": 461,
+          "end_line": 473,
+          "metric_value": 5,
+          "threshold": 3,
+          "refactor_hint": "Flatten using early returns or extract nested blocks into separate methods.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "MermaidGenerator._get_modified_variables",
+          "start_line": 461,
+          "end_line": 473,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "deep_nesting",
+          "display_name": "Deep Nesting",
+          "confidence": 0.731,
+          "location": "MermaidGenerator._is_target_overwritten_with_constant",
+          "start_line": 481,
+          "end_line": 489,
+          "metric_value": 5,
+          "threshold": 3,
+          "refactor_hint": "Flatten using early returns or extract nested blocks into separate methods.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.678,
+          "location": "ControlFlowAnalyzer._analyze_supported_language",
+          "start_line": 106,
+          "end_line": 132,
+          "metric_value": 0.92,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "long_method",
+          "display_name": "Long Method",
+          "confidence": 0.634,
+          "location": "ControlFlowAnalyzer._generate_while_loop_graph",
+          "start_line": 284,
+          "end_line": 328,
+          "metric_value": 41,
+          "threshold": 30,
+          "refactor_hint": "Extract sub-routines using the 'Extract Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.628,
+          "location": "ControlFlowAnalyzer._generate_while_loop_graph",
+          "start_line": 284,
+          "end_line": 328,
+          "metric_value": 0.86,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "deep_nesting",
+          "display_name": "Deep Nesting",
+          "confidence": 0.622,
+          "location": "ControlFlowAnalyzer._analyze_supported_language",
+          "start_line": 106,
+          "end_line": 132,
+          "metric_value": 4,
+          "threshold": 3,
+          "refactor_hint": "Flatten using early returns or extract nested blocks into separate methods.",
+          "severity": "warning"
+        },
+        {
+          "smell": "deep_nesting",
+          "display_name": "Deep Nesting",
+          "confidence": 0.622,
+          "location": "ControlFlowAnalyzer._detect_infinite_loops",
+          "start_line": 148,
+          "end_line": 189,
+          "metric_value": 4,
+          "threshold": 3,
+          "refactor_hint": "Flatten using early returns or extract nested blocks into separate methods.",
+          "severity": "warning"
+        },
+        {
+          "smell": "long_method",
+          "display_name": "Long Method",
+          "confidence": 0.599,
+          "location": "ControlFlowAnalyzer._detect_infinite_loops",
+          "start_line": 148,
+          "end_line": 189,
+          "metric_value": 38,
+          "threshold": 30,
+          "refactor_hint": "Extract sub-routines using the 'Extract Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "god_class",
+          "display_name": "God Class",
+          "confidence": 0.55,
+          "location": "ControlFlowAnalyzer",
+          "start_line": 74,
+          "end_line": 395,
+          "metric_value": 11,
+          "threshold": 10,
+          "refactor_hint": "Split the class by responsibility using the Single Responsibility Principle.",
+          "severity": "warning"
+        },
+        {
+          "smell": "long_method",
+          "display_name": "Long Method",
+          "confidence": 0.537,
+          "location": "ControlFlowAnalyzer._generate_graph_for_issue",
+          "start_line": 215,
+          "end_line": 253,
+          "metric_value": 33,
+          "threshold": 30,
+          "refactor_hint": "Extract sub-routines using the 'Extract Method' refactoring.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 13,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.731,
+      "file": "backend/analyzers/control_flow_analyzer.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "deep_nesting",
+          "display_name": "Deep Nesting",
+          "confidence": 0.818,
+          "location": "OptimizationAnalyzer._check_range_len",
+          "start_line": 94,
+          "end_line": 120,
+          "metric_value": 6,
+          "threshold": 3,
+          "refactor_hint": "Flatten using early returns or extract nested blocks into separate methods.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "OptimizationAnalyzer._check_range_len",
+          "start_line": 94,
+          "end_line": 120,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "OptimizationAnalyzer._check_nested_loops",
+          "start_line": 147,
+          "end_line": 165,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "deep_nesting",
+          "display_name": "Deep Nesting",
+          "confidence": 0.622,
+          "location": "OptimizationAnalyzer._check_list_comprehension",
+          "start_line": 122,
+          "end_line": 145,
+          "metric_value": 4,
+          "threshold": 3,
+          "refactor_hint": "Flatten using early returns or extract nested blocks into separate methods.",
+          "severity": "warning"
+        },
+        {
+          "smell": "deep_nesting",
+          "display_name": "Deep Nesting",
+          "confidence": 0.622,
+          "location": "OptimizationAnalyzer._check_nested_loops",
+          "start_line": 147,
+          "end_line": 165,
+          "metric_value": 4,
+          "threshold": 3,
+          "refactor_hint": "Flatten using early returns or extract nested blocks into separate methods.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 5,
+      "high_confidence_count": 1,
+      "overall_smell_score": 0.818,
+      "file": "backend/analyzers/optimization_analyzer.py",
+      "failed": false
+    },
+    {
+      "smells": [],
+      "smell_count": 0,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.0,
+      "file": "backend/analyzers/logic_analyzer.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "high_complexity",
+          "display_name": "High Cyclomatic Complexity",
+          "confidence": 0.832,
+          "location": "CompileTimeChecker._get_syntax_suggestion",
+          "start_line": 110,
+          "end_line": 136,
+          "metric_value": 18,
+          "threshold": 10,
+          "refactor_hint": "Simplify branches: extract conditions, use polymorphism, or redesign logic.",
+          "severity": "warning"
+        },
+        {
+          "smell": "deep_nesting",
+          "display_name": "Deep Nesting",
+          "confidence": 0.818,
+          "location": "CompileTimeChecker._check_imports",
+          "start_line": 138,
+          "end_line": 177,
+          "metric_value": 6,
+          "threshold": 3,
+          "refactor_hint": "Flatten using early returns or extract nested blocks into separate methods.",
+          "severity": "warning"
+        },
+        {
+          "smell": "deep_nesting",
+          "display_name": "Deep Nesting",
+          "confidence": 0.731,
+          "location": "CompileTimeChecker._get_syntax_suggestion",
+          "start_line": 110,
+          "end_line": 136,
+          "metric_value": 5,
+          "threshold": 3,
+          "refactor_hint": "Flatten using early returns or extract nested blocks into separate methods.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "CompileTimeChecker._check_imports",
+          "start_line": 138,
+          "end_line": 177,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "long_method",
+          "display_name": "Long Method",
+          "confidence": 0.69,
+          "location": "CompileTimeChecker.check",
+          "start_line": 40,
+          "end_line": 91,
+          "metric_value": 46,
+          "threshold": 30,
+          "refactor_hint": "Extract sub-routines using the 'Extract Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "long_method",
+          "display_name": "Long Method",
+          "confidence": 0.562,
+          "location": "CompileTimeChecker._check_imports",
+          "start_line": 138,
+          "end_line": 177,
+          "metric_value": 35,
+          "threshold": 30,
+          "refactor_hint": "Extract sub-routines using the 'Extract Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "high_complexity",
+          "display_name": "High Cyclomatic Complexity",
+          "confidence": 0.55,
+          "location": "CompileTimeChecker._check_imports",
+          "start_line": 138,
+          "end_line": 177,
+          "metric_value": 11,
+          "threshold": 10,
+          "refactor_hint": "Simplify branches: extract conditions, use polymorphism, or redesign logic.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 7,
+      "high_confidence_count": 2,
+      "overall_smell_score": 0.832,
+      "file": "backend/analyzers/compile_checker.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "deep_nesting",
+          "display_name": "Deep Nesting",
+          "confidence": 0.731,
+          "location": "FeatureExtractor._extract_class",
+          "start_line": 160,
+          "end_line": 195,
+          "metric_value": 5,
+          "threshold": 3,
+          "refactor_hint": "Flatten using early returns or extract nested blocks into separate methods.",
+          "severity": "warning"
+        },
+        {
+          "smell": "deep_nesting",
+          "display_name": "Deep Nesting",
+          "confidence": 0.731,
+          "location": "FeatureExtractor._count_calls",
+          "start_line": 265,
+          "end_line": 294,
+          "metric_value": 5,
+          "threshold": 3,
+          "refactor_hint": "Flatten using early returns or extract nested blocks into separate methods.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "FeatureExtractor._count_calls",
+          "start_line": 265,
+          "end_line": 294,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "deep_nesting",
+          "display_name": "Deep Nesting",
+          "confidence": 0.622,
+          "location": "FeatureExtractor._collect_imports",
+          "start_line": 143,
+          "end_line": 158,
+          "metric_value": 4,
+          "threshold": 3,
+          "refactor_hint": "Flatten using early returns or extract nested blocks into separate methods.",
+          "severity": "warning"
+        },
+        {
+          "smell": "god_class",
+          "display_name": "God Class (High WMC)",
+          "confidence": 0.599,
+          "location": "FeatureExtractor",
+          "start_line": 95,
+          "end_line": 294,
+          "metric_value": 48,
+          "threshold": 40,
+          "refactor_hint": "Decompose complex methods and distribute responsibilities across smaller classes.",
+          "severity": "error"
+        },
+        {
+          "smell": "high_complexity",
+          "display_name": "High Cyclomatic Complexity",
+          "confidence": 0.599,
+          "location": "FeatureExtractor._extract_class",
+          "start_line": 160,
+          "end_line": 195,
+          "metric_value": 12,
+          "threshold": 10,
+          "refactor_hint": "Simplify branches: extract conditions, use polymorphism, or redesign logic.",
+          "severity": "warning"
+        },
+        {
+          "smell": "long_method",
+          "display_name": "Long Method",
+          "confidence": 0.55,
+          "location": "FeatureExtractor._extract_function",
+          "start_line": 197,
+          "end_line": 234,
+          "metric_value": 34,
+          "threshold": 30,
+          "refactor_hint": "Extract sub-routines using the 'Extract Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "long_method",
+          "display_name": "Long Method",
+          "confidence": 0.512,
+          "location": "FeatureExtractor._extract_class",
+          "start_line": 160,
+          "end_line": 195,
+          "metric_value": 31,
+          "threshold": 30,
+          "refactor_hint": "Extract sub-routines using the 'Extract Method' refactoring.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 8,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.731,
+      "file": "backend/analyzers/feature_extractor.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "test_required_keys_present",
+          "start_line": 131,
+          "end_line": 135,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 1,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.731,
+      "file": "backend/tests/test_sprint_risk_model.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.542,
+          "location": "TestSecurityCodeInjection.test_feature_extractor_no_exec_on_malicious_code",
+          "start_line": 39,
+          "end_line": 55,
+          "metric_value": 0.75,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.542,
+          "location": "TestSecurityCodeInjection.test_smell_detector_no_exec",
+          "start_line": 57,
+          "end_line": 70,
+          "metric_value": 0.75,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.542,
+          "location": "TestSecurityCodeInjection.test_refactor_agent_no_exec_on_code",
+          "start_line": 72,
+          "end_line": 86,
+          "metric_value": 0.75,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.542,
+          "location": "TestASTSecurityBoundary.test_analysis_sandbox_is_pure_ast",
+          "start_line": 160,
+          "end_line": 168,
+          "metric_value": 0.75,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 4,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.542,
+      "file": "backend/tests/test_security.py",
+      "failed": false
+    },
+    {
+      "smells": [],
+      "smell_count": 0,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.0,
+      "file": "backend/tests/conftest.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestCIGatekeeper.test_25_clean_prs_pass",
+          "start_line": 73,
+          "end_line": 93,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestCIGatekeeper.test_25_smelly_prs_blocked",
+          "start_line": 97,
+          "end_line": 116,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestCIGatekeeper.test_overall_gate_accuracy",
+          "start_line": 120,
+          "end_line": 147,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestCIGatekeeper.test_lower_threshold_blocks_more",
+          "start_line": 151,
+          "end_line": 171,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestCIGatekeeper.test_threshold_change_reflects_in_outcome",
+          "start_line": 173,
+          "end_line": 190,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 5,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.731,
+      "file": "backend/tests/test_ci_gatekeeper.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "god_class",
+          "display_name": "God Class",
+          "confidence": 0.731,
+          "location": "TestPythonLexicalAnalysis",
+          "start_line": 14,
+          "end_line": 117,
+          "metric_value": 15,
+          "threshold": 10,
+          "refactor_hint": "Split the class by responsibility using the Single Responsibility Principle.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 1,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.731,
+      "file": "backend/tests/test_lexical_analysis.py",
+      "failed": false
+    },
+    {
+      "smells": [],
+      "smell_count": 0,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.0,
+      "file": "backend/tests/test_feature_extractor.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "test_syntax_preserved_on_good_llm_output",
+          "start_line": 54,
+          "end_line": 77,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "test_rollback_keeps_original_parseable",
+          "start_line": 93,
+          "end_line": 106,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "test_idempotency_mock_llm",
+          "start_line": 116,
+          "end_line": 130,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.542,
+          "location": "test_llm_exception_triggers_graceful_failure",
+          "start_line": 180,
+          "end_line": 191,
+          "metric_value": 0.75,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 4,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.731,
+      "file": "backend/tests/test_refactor_safety.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "build_graph",
+          "start_line": 12,
+          "end_line": 24,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestASTIntegrity.test_ast_is_dag_simple",
+          "start_line": 29,
+          "end_line": 38,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestASTIntegrity.test_ast_is_dag_complex",
+          "start_line": 40,
+          "end_line": 55,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestASTIntegrity.test_no_orphan_nodes",
+          "start_line": 57,
+          "end_line": 69,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestASTIntegrity.test_node_count_grows_with_complexity",
+          "start_line": 78,
+          "end_line": 84,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestASTIntegrity.test_no_none_in_children",
+          "start_line": 132,
+          "end_line": 138,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestASTIntegrity.test_ast_roundtrip_consistency",
+          "start_line": 140,
+          "end_line": 147,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "god_class",
+          "display_name": "God Class",
+          "confidence": 0.599,
+          "location": "TestASTIntegrity",
+          "start_line": 27,
+          "end_line": 147,
+          "metric_value": 12,
+          "threshold": 10,
+          "refactor_hint": "Split the class by responsibility using the Single Responsibility Principle.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 8,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.731,
+      "file": "backend/tests/test_ast_integrity.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestObservabilityAPI.test_health_check_returns_running",
+          "start_line": 63,
+          "end_line": 71,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestObservabilityAPI.test_sprint_analytics_returns_valid_structure",
+          "start_line": 87,
+          "end_line": 97,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestObservabilityLogging.test_smell_detector_does_not_suppress_all_exceptions",
+          "start_line": 114,
+          "end_line": 121,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestObservabilityLogging.test_sprint_risk_model_result_is_deterministic",
+          "start_line": 123,
+          "end_line": 130,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.583,
+          "location": "TestObservabilityAPI.test_analyze_smells_response_non_empty_on_smelly",
+          "start_line": 74,
+          "end_line": 84,
+          "metric_value": 0.8,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 5,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.731,
+      "file": "backend/tests/test_observability.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "test_to_dict_serialization",
+          "start_line": 146,
+          "end_line": 161,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 1,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.731,
+      "file": "backend/tests/test_control_flow_analyzer.py",
+      "failed": false
+    },
+    {
+      "smells": [],
+      "smell_count": 0,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.0,
+      "file": "backend/tests/__init__.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestDataIntegrity.temp_store",
+          "start_line": 20,
+          "end_line": 30,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestDataIntegrity.test_store_file_always_valid_json_after_writes",
+          "start_line": 86,
+          "end_line": 93,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestDataIntegrity.test_repeated_sprint_id_handled_gracefully",
+          "start_line": 95,
+          "end_line": 100,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestDataIntegrity.test_store_load_fallback_on_corrupt_file",
+          "start_line": 117,
+          "end_line": 129,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "god_class",
+          "display_name": "God Class",
+          "confidence": 0.646,
+          "location": "TestDataIntegrity",
+          "start_line": 17,
+          "end_line": 129,
+          "metric_value": 13,
+          "threshold": 10,
+          "refactor_hint": "Split the class by responsibility using the Single Responsibility Principle.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 5,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.731,
+      "file": "backend/tests/test_data_integrity.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "run_refactor_safety",
+          "start_line": 66,
+          "end_line": 76,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.542,
+          "location": "run_smell_detection_coverage",
+          "start_line": 45,
+          "end_line": 63,
+          "metric_value": 0.75,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.542,
+          "location": "run_ci_gate_accuracy",
+          "start_line": 79,
+          "end_line": 102,
+          "metric_value": 0.75,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "long_method",
+          "display_name": "Long Method",
+          "confidence": 0.525,
+          "location": "TestAcceptanceCriteria.test_overall_system_integrity_score",
+          "start_line": 175,
+          "end_line": 209,
+          "metric_value": 32,
+          "threshold": 30,
+          "refactor_hint": "Extract sub-routines using the 'Extract Method' refactoring.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 4,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.731,
+      "file": "backend/tests/test_acceptance.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestPerformance.test_large_codebase_parsing_time",
+          "start_line": 45,
+          "end_line": 57,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestPerformance.test_large_codebase_memory",
+          "start_line": 59,
+          "end_line": 79,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestPerformance.test_high_branch_complexity_time",
+          "start_line": 81,
+          "end_line": 95,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestPerformance.test_concurrent_analysis_no_exceptions",
+          "start_line": 97,
+          "end_line": 118,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestPerformance.test_concurrent_analysis_no_deadlock",
+          "start_line": 120,
+          "end_line": 143,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestPerformance.test_feature_extractor_speed_single_function",
+          "start_line": 145,
+          "end_line": 157,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.673,
+          "location": "generate_large_code",
+          "start_line": 15,
+          "end_line": 30,
+          "metric_value": 0.92,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.542,
+          "location": "generate_high_branch_code",
+          "start_line": 33,
+          "end_line": 40,
+          "metric_value": 0.75,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 8,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.731,
+      "file": "backend/tests/test_performance.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestPythonSyntaxAnalysis.test_parse_tree_depth_consistent",
+          "start_line": 149,
+          "end_line": 159,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "god_class",
+          "display_name": "God Class",
+          "confidence": 0.69,
+          "location": "TestPythonSyntaxAnalysis",
+          "start_line": 12,
+          "end_line": 170,
+          "metric_value": 14,
+          "threshold": 10,
+          "refactor_hint": "Split the class by responsibility using the Single Responsibility Principle.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 2,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.731,
+      "file": "backend/tests/test_syntax_analysis.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "run_pytest_json",
+          "start_line": 46,
+          "end_line": 68,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "parse_category_results",
+          "start_line": 71,
+          "end_line": 97,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "main",
+          "start_line": 177,
+          "end_line": 205,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "long_method",
+          "display_name": "Long Method",
+          "confidence": 0.512,
+          "location": "write_text_report",
+          "start_line": 141,
+          "end_line": 174,
+          "metric_value": 31,
+          "threshold": 30,
+          "refactor_hint": "Extract sub-routines using the 'Extract Method' refactoring.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 4,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.731,
+      "file": "backend/tests/generate_report.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestEndToEnd.test_step1_analyze_smells",
+          "start_line": 49,
+          "end_line": 60,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestEndToEnd.test_step2_refactor_detected_smell",
+          "start_line": 63,
+          "end_line": 82,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestEndToEnd.test_step3_log_sprint",
+          "start_line": 85,
+          "end_line": 98,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestEndToEnd.test_step4_predict_sprint_risk",
+          "start_line": 101,
+          "end_line": 116,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestEndToEnd.test_step5_sprint_analytics",
+          "start_line": 119,
+          "end_line": 129,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestEndToEnd.test_step6_health_check",
+          "start_line": 132,
+          "end_line": 140,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestEndToEnd.test_full_pipeline_no_500_errors",
+          "start_line": 143,
+          "end_line": 165,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestE2EComponentPipeline.test_smell_to_refactor_chain",
+          "start_line": 174,
+          "end_line": 189,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.512,
+          "location": "TestE2EComponentPipeline.test_feature_to_risk_chain",
+          "start_line": 191,
+          "end_line": 212,
+          "metric_value": 0.71,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 9,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.731,
+      "file": "backend/tests/test_e2e.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestChaosMLServiceDown.test_model_predict_exception_returns_failure_note",
+          "start_line": 19,
+          "end_line": 28,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestChaosMLServiceDown.test_api_predict_with_model_crash_returns_500",
+          "start_line": 31,
+          "end_line": 39,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestChaosMLServiceDown.test_smell_detector_on_parse_error_no_crash",
+          "start_line": 41,
+          "end_line": 48,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestChaosRefactorAgentTimeout.test_refactor_agent_exception_from_llm",
+          "start_line": 72,
+          "end_line": 83,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestChaosSprintStoreFailure.test_sprint_store_ioerror_returns_500",
+          "start_line": 108,
+          "end_line": 121,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestChaosSprintStoreFailure.test_sprint_risk_endpoint_exception_returns_500",
+          "start_line": 124,
+          "end_line": 135,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestChaosGracefulDegradation.test_multiple_chaos_events_no_state_corruption",
+          "start_line": 140,
+          "end_line": 152,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestChaosGracefulDegradation.test_feature_extractor_recovery_after_failure",
+          "start_line": 154,
+          "end_line": 166,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.542,
+          "location": "TestChaosRefactorAgentTimeout.test_llm_generate_timeout_triggers_graceful_failure",
+          "start_line": 53,
+          "end_line": 70,
+          "metric_value": 0.75,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 9,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.731,
+      "file": "backend/tests/test_chaos.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "test_detect_to_dict_has_required_keys",
+          "start_line": 136,
+          "end_line": 142,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 1,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.731,
+      "file": "backend/tests/test_smell_detector.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "TestMLModel.test_stub_f1_threshold",
+          "start_line": 105,
+          "end_line": 131,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "god_class",
+          "display_name": "God Class",
+          "confidence": 0.55,
+          "location": "TestMLModel",
+          "start_line": 43,
+          "end_line": 141,
+          "metric_value": 11,
+          "threshold": 10,
+          "refactor_hint": "Split the class by responsibility using the Single Responsibility Principle.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 2,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.731,
+      "file": "backend/tests/test_ml_model.py",
+      "failed": false
+    },
+    {
+      "smells": [],
+      "smell_count": 0,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.0,
+      "file": "backend/tests/test_regression.py",
+      "failed": false
+    },
+    {
+      "smells": [],
+      "smell_count": 0,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.0,
+      "file": "backend/llm_providers/__init__.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "deep_nesting",
+          "display_name": "Deep Nesting",
+          "confidence": 0.622,
+          "location": "create_llm_provider",
+          "start_line": 10,
+          "end_line": 41,
+          "metric_value": 4,
+          "threshold": 3,
+          "refactor_hint": "Flatten using early returns or extract nested blocks into separate methods.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 1,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.622,
+      "file": "backend/llm_providers/factory.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "deep_nesting",
+          "display_name": "Deep Nesting",
+          "confidence": 0.731,
+          "location": "OllamaProvider.suggest_optimizations",
+          "start_line": 125,
+          "end_line": 184,
+          "metric_value": 5,
+          "threshold": 3,
+          "refactor_hint": "Flatten using early returns or extract nested blocks into separate methods.",
+          "severity": "warning"
+        },
+        {
+          "smell": "long_method",
+          "display_name": "Long Method",
+          "confidence": 0.711,
+          "location": "OllamaProvider.suggest_optimizations",
+          "start_line": 125,
+          "end_line": 184,
+          "metric_value": 48,
+          "threshold": 30,
+          "refactor_hint": "Extract sub-routines using the 'Extract Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "long_method",
+          "display_name": "Long Method",
+          "confidence": 0.574,
+          "location": "OllamaProvider.analyze_logic",
+          "start_line": 78,
+          "end_line": 123,
+          "metric_value": 36,
+          "threshold": 30,
+          "refactor_hint": "Extract sub-routines using the 'Extract Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.542,
+          "location": "OllamaProvider.is_available",
+          "start_line": 27,
+          "end_line": 36,
+          "metric_value": 0.75,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.542,
+          "location": "OllamaProvider.analyze_logic",
+          "start_line": 78,
+          "end_line": 123,
+          "metric_value": 0.75,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "long_method",
+          "display_name": "Long Method",
+          "confidence": 0.537,
+          "location": "OllamaProvider._generate",
+          "start_line": 38,
+          "end_line": 76,
+          "metric_value": 33,
+          "threshold": 30,
+          "refactor_hint": "Extract sub-routines using the 'Extract Method' refactoring.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 6,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.731,
+      "file": "backend/llm_providers/ollama_provider.py",
+      "failed": false
+    },
+    {
+      "smells": [],
+      "smell_count": 0,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.0,
+      "file": "backend/llm_providers/base.py",
+      "failed": false
+    },
+    {
+      "smells": [],
+      "smell_count": 0,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.0,
+      "file": "backend/refactor_agent/refactor_rules.py",
+      "failed": false
+    },
+    {
+      "smells": [],
+      "smell_count": 0,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.0,
+      "file": "backend/refactor_agent/__init__.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "long_method",
+          "display_name": "Long Method",
+          "confidence": 0.818,
+          "location": "RefactorAgent.refactor",
+          "start_line": 35,
+          "end_line": 101,
+          "metric_value": 60,
+          "threshold": 30,
+          "refactor_hint": "Extract sub-routines using the 'Extract Method' refactoring.",
+          "severity": "error"
+        },
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.512,
+          "location": "RefactorAgent._extract_code",
+          "start_line": 107,
+          "end_line": 123,
+          "metric_value": 0.71,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 2,
+      "high_confidence_count": 1,
+      "overall_smell_score": 0.818,
+      "file": "backend/refactor_agent/refactor_agent.py",
+      "failed": false
+    },
+    {
+      "smells": [],
+      "smell_count": 0,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.0,
+      "file": "backend/agile_risk/__init__.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "long_method",
+          "display_name": "Long Method",
+          "confidence": 0.721,
+          "location": "SprintRiskModel.predict",
+          "start_line": 29,
+          "end_line": 89,
+          "metric_value": 49,
+          "threshold": 30,
+          "refactor_hint": "Extract sub-routines using the 'Extract Method' refactoring.",
+          "severity": "warning"
+        },
+        {
+          "smell": "deep_nesting",
+          "display_name": "Deep Nesting",
+          "confidence": 0.622,
+          "location": "SprintRiskModel._classify_trend",
+          "start_line": 105,
+          "end_line": 116,
+          "metric_value": 4,
+          "threshold": 3,
+          "refactor_hint": "Flatten using early returns or extract nested blocks into separate methods.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 2,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.721,
+      "file": "backend/agile_risk/sprint_risk_model.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "feature_envy",
+          "display_name": "Feature Envy",
+          "confidence": 0.731,
+          "location": "SprintStore.__init__",
+          "start_line": 32,
+          "end_line": 35,
+          "metric_value": 1.0,
+          "threshold": 0.7,
+          "refactor_hint": "Move the method closer to the data it uses via 'Move Method' refactoring.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 1,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.731,
+      "file": "backend/agile_risk/sprint_store.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "high_complexity",
+          "display_name": "High Cyclomatic Complexity",
+          "confidence": 0.646,
+          "location": "high_complexity_func",
+          "start_line": 2,
+          "end_line": 21,
+          "metric_value": 13,
+          "threshold": 10,
+          "refactor_hint": "Simplify branches: extract conditions, use polymorphism, or redesign logic.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 1,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.646,
+      "file": "backend/tests/fixtures/high_complexity_sample.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "long_method",
+          "display_name": "Long Method",
+          "confidence": 0.562,
+          "location": "very_long_function",
+          "start_line": 2,
+          "end_line": 36,
+          "metric_value": 35,
+          "threshold": 30,
+          "refactor_hint": "Extract sub-routines using the 'Extract Method' refactoring.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 1,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.562,
+      "file": "backend/tests/fixtures/long_method_sample.py",
+      "failed": false
+    },
+    {
+      "smells": [],
+      "smell_count": 0,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.0,
+      "file": "backend/tests/fixtures/clean_class.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "god_class",
+          "display_name": "God Class",
+          "confidence": 0.599,
+          "location": "GodClassSample",
+          "start_line": 2,
+          "end_line": 14,
+          "metric_value": 12,
+          "threshold": 10,
+          "refactor_hint": "Split the class by responsibility using the Single Responsibility Principle.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 1,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.599,
+      "file": "backend/tests/fixtures/god_class_sample.py",
+      "failed": false
+    },
+    {
+      "smells": [
+        {
+          "smell": "deep_nesting",
+          "display_name": "Deep Nesting",
+          "confidence": 0.731,
+          "location": "deeply_nested",
+          "start_line": 2,
+          "end_line": 9,
+          "metric_value": 5,
+          "threshold": 3,
+          "refactor_hint": "Flatten using early returns or extract nested blocks into separate methods.",
+          "severity": "warning"
+        }
+      ],
+      "smell_count": 1,
+      "high_confidence_count": 0,
+      "overall_smell_score": 0.731,
+      "file": "backend/tests/fixtures/deep_nesting_sample.py",
+      "failed": false
+    }
+  ],
+  "threshold": 0.85
+}

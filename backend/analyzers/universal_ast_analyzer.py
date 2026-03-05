@@ -298,57 +298,48 @@ class UniversalASTAnalyzer:
             tree = esprima.parseScript(code, {'loc': True, 'tolerant': True})
         except:
             return []
-        
+            
         issues = []
         
-        def check_block(body_list):
-            """Check a list of statements for unreachable code"""
-            if not isinstance(body_list, list):
-                return
-            
-            for i, stmt in enumerate(body_list):
-                if not isinstance(stmt, dict):
-                    continue
-                
-                stmt_type = stmt.get('type')
-                if stmt_type in ['ReturnStatement', 'BreakStatement', 'ContinueStatement']:
-                    if i < len(body_list) - 1:
-                        next_stmt = body_list[i + 1]
-                        if isinstance(next_stmt, dict):
-                            loc = next_stmt.get('loc', {}).get('start', {})
-                            issues.append({
-                                'type': 'unreachable_code',
-                                'line': loc.get('line', 0),
-                                'description': f'Unreachable code after {stmt_type.replace("Statement", "").lower()} statement',
-                                'severity': 'warning'
-                            })
-                        break
-        
         def traverse(node):
-            """Recursively traverse AST"""
-            if not isinstance(node, dict):
-                return
+            if not isinstance(node, dict): return
             
             node_type = node.get('type')
             
-            # Check function bodies
             if node_type in ['FunctionDeclaration', 'FunctionExpression', 'ArrowFunctionExpression']:
                 body = node.get('body')
                 if isinstance(body, dict) and body.get('type') == 'BlockStatement':
-                    check_block(body.get('body', []))
-            
-            # Check block statements
+                    self._check_js_block(body.get('body', []), issues)
+                    
             elif node_type == 'BlockStatement':
-                check_block(node.get('body', []))
-            
-            # Traverse children
+                self._check_js_block(node.get('body', []), issues)
+                
             for key, value in node.items():
-                if isinstance(value, dict):
-                    traverse(value)
+                if isinstance(value, dict): traverse(value)
                 elif isinstance(value, list):
                     for item in value:
-                        if isinstance(item, dict):
-                            traverse(item)
-        
-        traverse(tree.toDict())  # Convert to dict before traversing
+                        if isinstance(item, dict): traverse(item)
+                        
+        traverse(tree.toDict())
         return issues
+        
+    def _check_js_block(self, body_list: Any, issues: List[Dict[str, Any]]):
+        """Helper to check a JS block for unreachable code."""
+        if not isinstance(body_list, list): return
+        
+        for i, stmt in enumerate(body_list):
+            if not isinstance(stmt, dict): continue
+            
+            stmt_type = stmt.get('type')
+            if stmt_type in ['ReturnStatement', 'BreakStatement', 'ContinueStatement']:
+                if i < len(body_list) - 1:
+                    next_stmt = body_list[i + 1]
+                    if isinstance(next_stmt, dict):
+                        loc = next_stmt.get('loc', {}).get('start', {})
+                        issues.append({
+                            'type': 'unreachable_code',
+                            'line': loc.get('line', 0),
+                            'description': f'Unreachable code after {stmt_type.replace("Statement", "").lower()} statement',
+                            'severity': 'warning'
+                        })
+                    break

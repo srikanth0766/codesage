@@ -110,95 +110,78 @@ class SmellDetector:
         smells = []
         location = f"{parent_name}.{fn.name}" if parent_name else fn.name
 
-        # 1. Long Method
+        smells.extend(self._check_long_method(fn, location))
+        smells.extend(self._check_large_params(fn, location))
+        smells.extend(self._check_deep_nesting(fn, location))
+        smells.extend(self._check_high_complexity(fn, location))
+        smells.extend(self._check_feature_envy(fn, location))
+
+        return smells
+
+    def _check_long_method(self, fn: MethodFeatures, location: str) -> List[SmellResult]:
+        smells = []
         if fn.loc > THRESHOLDS["long_method"]["loc"]:
             excess = fn.loc - THRESHOLDS["long_method"]["loc"]
             confidence = _sigmoid(excess, scale=20)
             smells.append(SmellResult(
-                smell="long_method",
-                display_name="Long Method",
-                confidence=round(confidence, 3),
-                location=location,
-                start_line=fn.start_line,
-                end_line=fn.end_line,
-                metric_value=fn.loc,
-                threshold=THRESHOLDS["long_method"]["loc"],
+                smell="long_method", display_name="Long Method", confidence=round(confidence, 3), location=location,
+                start_line=fn.start_line, end_line=fn.end_line, metric_value=fn.loc, threshold=THRESHOLDS["long_method"]["loc"],
                 refactor_hint="Extract sub-routines using the 'Extract Method' refactoring.",
                 severity="warning" if fn.loc < 60 else "error",
             ))
+        return smells
 
-        # 2. Large Parameter List
+    def _check_large_params(self, fn: MethodFeatures, location: str) -> List[SmellResult]:
+        smells = []
         if fn.params > THRESHOLDS["large_parameter_list"]["params"]:
             excess = fn.params - THRESHOLDS["large_parameter_list"]["params"]
             confidence = _sigmoid(excess, scale=3)
             smells.append(SmellResult(
-                smell="large_parameter_list",
-                display_name="Large Parameter List",
-                confidence=round(confidence, 3),
-                location=location,
-                start_line=fn.start_line,
-                end_line=fn.end_line,
-                metric_value=fn.params,
-                threshold=THRESHOLDS["large_parameter_list"]["params"],
-                refactor_hint="Introduce a Parameter Object or Builder pattern.",
-                severity="warning",
+                smell="large_parameter_list", display_name="Large Parameter List", confidence=round(confidence, 3), location=location,
+                start_line=fn.start_line, end_line=fn.end_line, metric_value=fn.params, threshold=THRESHOLDS["large_parameter_list"]["params"],
+                refactor_hint="Introduce a Parameter Object or Builder pattern.", severity="warning",
             ))
+        return smells
 
-        # 3. Deep Nesting
+    def _check_deep_nesting(self, fn: MethodFeatures, location: str) -> List[SmellResult]:
+        smells = []
         if fn.max_nesting_depth > THRESHOLDS["deep_nesting"]["depth"]:
             excess = fn.max_nesting_depth - THRESHOLDS["deep_nesting"]["depth"]
             confidence = _sigmoid(excess, scale=2)
             smells.append(SmellResult(
-                smell="deep_nesting",
-                display_name="Deep Nesting",
-                confidence=round(confidence, 3),
-                location=location,
-                start_line=fn.start_line,
-                end_line=fn.end_line,
-                metric_value=fn.max_nesting_depth,
-                threshold=THRESHOLDS["deep_nesting"]["depth"],
-                refactor_hint="Flatten using early returns or extract nested blocks into separate methods.",
-                severity="warning",
+                smell="deep_nesting", display_name="Deep Nesting", confidence=round(confidence, 3), location=location,
+                start_line=fn.start_line, end_line=fn.end_line, metric_value=fn.max_nesting_depth, threshold=THRESHOLDS["deep_nesting"]["depth"],
+                refactor_hint="Flatten using early returns or extract nested blocks into separate methods.", severity="warning",
             ))
+        return smells
 
-        # 4. High Complexity
+    def _check_high_complexity(self, fn: MethodFeatures, location: str) -> List[SmellResult]:
+        smells = []
         if fn.complexity > THRESHOLDS["high_complexity"]["complexity"]:
             excess = fn.complexity - THRESHOLDS["high_complexity"]["complexity"]
             confidence = _sigmoid(excess, scale=5)
             smells.append(SmellResult(
-                smell="high_complexity",
-                display_name="High Cyclomatic Complexity",
-                confidence=round(confidence, 3),
-                location=location,
-                start_line=fn.start_line,
-                end_line=fn.end_line,
-                metric_value=fn.complexity,
-                threshold=THRESHOLDS["high_complexity"]["complexity"],
+                smell="high_complexity", display_name="High Cyclomatic Complexity", confidence=round(confidence, 3), location=location,
+                start_line=fn.start_line, end_line=fn.end_line, metric_value=fn.complexity, threshold=THRESHOLDS["high_complexity"]["complexity"],
                 refactor_hint="Simplify branches: extract conditions, use polymorphism, or redesign logic.",
                 severity="error" if fn.complexity > 20 else "warning",
             ))
+        return smells
 
-        # 5. Feature Envy
+    def _check_feature_envy(self, fn: MethodFeatures, location: str) -> List[SmellResult]:
+        smells = []
         total_calls = fn.local_calls + fn.external_calls
-        if total_calls >= 3:  # Need enough calls to have a meaningful ratio
+        if total_calls >= 3:
             ext_ratio = fn.external_calls / total_calls
             thresh = THRESHOLDS["feature_envy"]["ext_ratio"]
             if ext_ratio > thresh:
                 excess = ext_ratio - thresh
-                confidence = _sigmoid(excess * 10, scale=3)  # Scale up ratio
+                confidence = _sigmoid(excess * 10, scale=3)
                 smells.append(SmellResult(
-                    smell="feature_envy",
-                    display_name="Feature Envy",
-                    confidence=round(confidence, 3),
-                    location=location,
-                    start_line=fn.start_line,
-                    end_line=fn.end_line,
-                    metric_value=round(ext_ratio, 2),
-                    threshold=thresh,
-                    refactor_hint="Move the method closer to the data it uses via 'Move Method' refactoring.",
-                    severity="warning",
+                    smell="feature_envy", display_name="Feature Envy", confidence=round(confidence, 3), location=location,
+                    start_line=fn.start_line, end_line=fn.end_line, metric_value=round(ext_ratio, 2), threshold=thresh,
+                    refactor_hint="Move the method closer to the data it uses via 'Move Method' refactoring.", severity="warning",
                 ))
-
         return smells
 
     # ─── Per-Class Checks ────────────────────────────────────────────────────

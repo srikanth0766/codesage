@@ -1,5 +1,5 @@
 # Regression fixture: High cyclomatic complexity (CC >= 11)
-def high_complexity_func(a, b, c, d, e, f, g, h, i, j, k):
+def high_complexity_func(params_dict):
     if a and b:
         pass
     if c or d:
