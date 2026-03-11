@@ -42,7 +42,7 @@ class TestSecurityCodeInjection:
         import os
 
         # Write a flag to a temp path if executed
-        flag_path = "/tmp/a3sc_security_test_executed.flag"
+        flag_path = "/tmp/codesage_security_test_executed.flag"
         malicious = f"import os\nos.system('touch {flag_path}')"
 
         extractor = FeatureExtractor()
@@ -59,7 +59,7 @@ class TestSecurityCodeInjection:
         from analyzers.smell_detector import SmellDetector
         import pathlib
 
-        flag_path = "/tmp/a3sc_smell_exec_test.flag"
+        flag_path = "/tmp/codesage_smell_exec_test.flag"
         malicious = f"import os\nos.system('touch {flag_path}')"
 
         detector = SmellDetector()
@@ -74,7 +74,7 @@ class TestSecurityCodeInjection:
         from refactor_agent.refactor_agent import RefactorAgent
         import pathlib
 
-        flag_path = "/tmp/a3sc_refactor_exec_test.flag"
+        flag_path = "/tmp/codesage_refactor_exec_test.flag"
         malicious = f"import os\nos.system('touch {flag_path}')"
 
         agent = RefactorAgent.__new__(RefactorAgent)
@@ -149,7 +149,7 @@ class TestASTSecurityBoundary:
     def test_ast_parse_does_not_eval(self):
         """ast.parse() must never evaluate or execute the code."""
         import pathlib
-        flag = "/tmp/a3sc_ast_exec.flag"
+        flag = "/tmp/codesage_ast_exec.flag"
         code = f"open('{flag}', 'w').close()"
         try:
             ast.parse(code)
@@ -160,9 +160,9 @@ class TestASTSecurityBoundary:
     def test_analysis_sandbox_is_pure_ast(self):
         """Verify all analysis is AST-based, not eval-based."""
         from analyzers.feature_extractor import FeatureExtractor
-        code = "__import__('os').system('echo EXECUTED > /tmp/a3sc_import_test.flag')"
+        code = "__import__('os').system('echo EXECUTED > /tmp/codesage_import_test.flag')"
         extractor = FeatureExtractor()
         result = extractor.extract(code)
         # Just checks no crash + no file created
         import pathlib
-        assert not pathlib.Path("/tmp/a3sc_import_test.flag").exists()
+        assert not pathlib.Path("/tmp/codesage_import_test.flag").exists()

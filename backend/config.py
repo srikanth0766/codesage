@@ -18,12 +18,14 @@ class Settings(BaseSettings):
     openai_api_key: Optional[str] = None
     anthropic_api_key: Optional[str] = None
     gemini_api_key: Optional[str] = None
+    mistral_api_key: Optional[str] = None
     
     # Model Names
     openai_model: str = "gpt-4-turbo-preview"
     claude_model: str = "claude-3-sonnet-20240229"
     ollama_model: str = "llama3.2:3b"  # Lightweight model for local use
     gemini_model: str = "gemini-1.5-pro"
+    mistral_model: str = "mistral-small-latest"
     
     # Ollama Settings
     ollama_base_url: str = "http://localhost:11434"

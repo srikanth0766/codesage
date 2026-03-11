@@ -1,5 +1,5 @@
 """
-Shared fixtures for the A³SC test suite.
+Shared fixtures for the CodeSage test suite.
 
 All fixtures are available globally via conftest.py auto-discovery.
 """

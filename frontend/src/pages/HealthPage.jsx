@@ -21,7 +21,7 @@ export default function HealthPage() {
                         System Health
                     </h1>
                     <p className="text-sm text-gray-400 font-mono mt-1">
-                        Live telemetry and operational status of the A³SC analytical engine.
+                        Live telemetry and operational status of the CodeSage analytical engine.
                     </p>
                 </div>
             </div>

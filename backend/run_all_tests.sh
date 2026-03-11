@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ═══════════════════════════════════════════════════════════════════════════════
-#  A³SC — Master Test Runner
+#  CodeSage — Master Test Runner
 #  Usage: bash run_all_tests.sh [--fast | --coverage | --report-only]
 # ═══════════════════════════════════════════════════════════════════════════════
 set -euo pipefail
@@ -26,7 +26,7 @@ done
 
 echo ""
 echo "╔══════════════════════════════════════════════════════════════╗"
-echo "║         A³SC — AUTOMATED TESTING & INTEGRITY SUITE          ║"
+echo "║         CodeSage — AUTOMATED TESTING & INTEGRITY SUITE          ║"
 echo "╚══════════════════════════════════════════════════════════════╝"
 echo ""
 
@@ -69,7 +69,7 @@ if [[ "$REPORT_ONLY" == "false" ]]; then
   fi
 
   set +e
-  python3 -m pytest "${PYTEST_ARGS[@]}" 2>&1 | tee /tmp/a3sc_test_output.txt
+  python3 -m pytest "${PYTEST_ARGS[@]}" 2>&1 | tee /tmp/codesage_test_output.txt
   PYTEST_EXIT=$?
   set -e
 

@@ -44,7 +44,7 @@ function App() {
         {/* Top Header */}
         <header className="sticky top-0 z-30 border-b border-white/5 bg-cyber-900/60 backdrop-blur-xl transition-all h-20 flex items-center px-8">
           <div>
-            <h2 className="text-lg font-bold text-white tracking-wide">A³SC Command Center</h2>
+            <h2 className="text-lg font-bold text-white tracking-wide">CodeSage Command Center</h2>
             <p className="text-xs text-cyber-primary/60 font-mono tracking-widest uppercase">Intelligent Software Analysis</p>
           </div>
 

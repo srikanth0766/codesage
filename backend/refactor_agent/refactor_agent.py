@@ -20,10 +20,10 @@ class RefactorAgent:
     """
 
     def __init__(self):
-        """Lazily initialise the LLM provider (honours .env config)."""
+        """Lazily initialise the best available LLM provider."""
         try:
-            from llm_providers.factory import create_llm_provider
-            self._llm = create_llm_provider()
+            from llm_providers.factory import get_best_available_provider
+            self._llm = get_best_available_provider()
         except Exception as e:
             print(f"RefactorAgent: LLM provider unavailable — {e}")
             self._llm = None

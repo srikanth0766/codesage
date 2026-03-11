@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-A³SC Test Report Generator.
+CodeSage Test Report Generator.
 
 Reads pytest JSON output (coverage.json) and generates:
   - tests/test_report.json  — per-category results
@@ -142,7 +142,7 @@ def write_text_report(category_results: dict, score: float) -> Path:
     """Write human-readable integrity report."""
     lines = [
         "=" * 65,
-        "  A³SC — SYSTEM INTEGRITY REPORT",
+        "  CodeSage — SYSTEM INTEGRITY REPORT",
         f"  Generated: {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')} UTC",
         "=" * 65,
         "",
@@ -175,7 +175,7 @@ def write_text_report(category_results: dict, score: float) -> Path:
 
 
 def main():
-    print("A³SC Report Generator")
+    print("CodeSage Report Generator")
     print("─" * 40)
 
     # Try to read existing pytest JSON output

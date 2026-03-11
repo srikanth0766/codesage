@@ -1,8 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Settings, Sliders, Database, Webhook, Key } from 'lucide-react';
 
 export default function SettingsPage() {
+    const [riskThreshold, setRiskThreshold] = useState(10);
+    const [confidenceThreshold, setConfidenceThreshold] = useState(85);
+
+    useEffect(() => {
+        const savedRisk = localStorage.getItem('codeSage_riskThreshold');
+        if (savedRisk) setRiskThreshold(Number(savedRisk));
+
+        const savedConf = localStorage.getItem('codeSage_confThreshold');
+        if (savedConf) setConfidenceThreshold(Number(savedConf));
+    }, []);
+
+    const handleUpdateParameters = () => {
+        localStorage.setItem('codeSage_riskThreshold', riskThreshold);
+        localStorage.setItem('codeSage_confThreshold', confidenceThreshold);
+        alert('Parameters updated successfully!');
+    };
+
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -19,7 +36,7 @@ export default function SettingsPage() {
                         System Configuration
                     </h1>
                     <p className="text-sm text-gray-400 font-mono mt-1">
-                        Global settings and threshold configurations for the A³SC engine.
+                        Global settings and threshold configurations for the CodeSage engine.
                     </p>
                 </div>
             </div>
@@ -55,18 +72,31 @@ export default function SettingsPage() {
                         <div>
                             <div className="flex justify-between mb-1">
                                 <label className="text-xs text-gray-400 font-mono uppercase tracking-widest">Risk Tolerance Limit</label>
-                                <span className="text-xs text-cyber-warning font-mono">10 Smells</span>
+                                <span className="text-xs text-cyber-warning font-mono">{riskThreshold} Smells</span>
                             </div>
-                            <input type="range" min="1" max="50" defaultValue="10" className="w-full accent-cyber-warning h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer" />
+                            <input
+                                type="range" min="1" max="50"
+                                value={riskThreshold}
+                                onChange={(e) => setRiskThreshold(e.target.value)}
+                                className="w-full accent-cyber-warning h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer"
+                            />
                         </div>
                         <div>
                             <div className="flex justify-between mb-1">
                                 <label className="text-xs text-gray-400 font-mono uppercase tracking-widest">Confidence Threshold</label>
-                                <span className="text-xs text-cyber-success font-mono">85%</span>
+                                <span className="text-xs text-cyber-success font-mono">{confidenceThreshold}%</span>
                             </div>
-                            <input type="range" min="50" max="99" defaultValue="85" className="w-full accent-cyber-success h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer" />
+                            <input
+                                type="range" min="50" max="99"
+                                value={confidenceThreshold}
+                                onChange={(e) => setConfidenceThreshold(e.target.value)}
+                                className="w-full accent-cyber-success h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer"
+                            />
                         </div>
-                        <button className="cyber-button w-full mt-4 flex items-center justify-center gap-2 text-sm pt-2">
+                        <button
+                            onClick={handleUpdateParameters}
+                            className="cyber-button w-full mt-4 flex items-center justify-center gap-2 text-sm pt-2"
+                        >
                             <Database size={14} /> Update Parameters
                         </button>
                     </div>

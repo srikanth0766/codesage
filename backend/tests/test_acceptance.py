@@ -194,7 +194,7 @@ class TestAcceptanceCriteria:
             total_score += score * weight
 
         print(f"\n{'='*60}")
-        print("A³SC SYSTEM INTEGRITY REPORT")
+        print("CodeSage SYSTEM INTEGRITY REPORT")
         print(f"{'='*60}")
         for name, vals in report.items():
             status = "✅" if vals["score"] >= 0.80 else "⚠️"

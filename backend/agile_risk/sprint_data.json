@@ -1,45 +1,38 @@
 {
   "sprints": [
     {
-      "sprint_id": "CI-Test-Sprint",
-      "timestamp": "2026-02-27T04:05:01.735141",
-      "smell_count": 7,
-      "refactor_count": 3,
+      "sprint_id": "sprint 1",
+      "timestamp": "2026-03-08T17:41:22.664717",
+      "smell_count": 3,
+      "refactor_count": 46,
       "module": "default"
     },
     {
-      "sprint_id": "E2E-Sprint-1",
-      "timestamp": "2026-02-28T15:30:54.678950",
-      "smell_count": 12,
-      "refactor_count": 3,
-      "module": "e2e_test"
+      "sprint_id": "sprint 2",
+      "timestamp": "2026-03-09T10:17:47.401109",
+      "smell_count": 8,
+      "refactor_count": 8,
+      "module": "default"
     },
     {
-      "sprint_id": "FullPipeline-1",
-      "timestamp": "2026-02-28T15:30:54.684413",
-      "smell_count": 8,
+      "sprint_id": "sprint 3",
+      "timestamp": "2026-03-11T08:33:50.718471",
+      "smell_count": 20,
       "refactor_count": 2,
       "module": "default"
     },
     {
-      "sprint_id": "Sprint-1",
-      "timestamp": "2026-02-28T16:08:28.864099",
-      "smell_count": 15,
-      "refactor_count": 5,
+      "sprint_id": "sprint 4",
+      "timestamp": "2026-03-11T08:34:36.474790",
+      "smell_count": 45,
+      "refactor_count": 6,
       "module": "default"
     },
     {
-      "sprint_id": "sprint 2",
-      "timestamp": "2026-02-28T16:17:06.016037",
-      "smell_count": 0,
-      "refactor_count": 0,
-      "module": "default"
-    },
-    {
-      "sprint_id": "sprint 2",
-      "timestamp": "2026-02-28T16:20:43.495442",
-      "smell_count": 11,
-      "refactor_count": 203,
+      "sprint_id": "sprint 5",
+      "timestamp": "2026-03-11T08:39:09.455115",
+      "smell_count": 20,
+      "refactor_count": 15,
       "module": "default"
     }
   ]

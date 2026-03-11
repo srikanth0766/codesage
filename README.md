@@ -1,6 +1,6 @@
-# A³SC: Agentic AST-aware Smart Compiler
+# CodeSage: Agentic AST-aware Smart Compiler
 
-A next-generation, AI-powered system that goes beyond compiling code. A³SC understands code architecture, detects smells, automatically refactors with AI, enforces CI/CD quality gates, and predicts agile technical debt risks using statistical modeling.
+A next-generation, AI-powered system that goes beyond compiling code. CodeSage understands code architecture, detects smells, automatically refactors with AI, enforces CI/CD quality gates, and predicts agile technical debt risks using statistical modeling.
 
 ## 🌟 Key Capabilities
 
@@ -41,7 +41,7 @@ The system is divided into two parts:
 
 ### Step 1: Install & Start Ollama (Required for AI Refactoring)
 
-A³SC uses local LLMs to keep your code private and avoid API fees.
+CodeSage uses local LLMs to keep your code private and avoid API fees.
 1. Download and install Ollama from [ollama.com](https://ollama.com/).
 2. Open your terminal and pull the recommended model (`qwen2.5:0.5b` or `llama3.2`):
    ```bash
@@ -79,7 +79,7 @@ A³SC uses local LLMs to keep your code private and avoid API fees.
 
 ### Step 3: Run the Comprehensive Validation Suite
 
-A³SC includes a massive 15-category validation suite proving its integrity. You can run all tests and generate a report using the master script.
+CodeSage includes a massive 15-category validation suite proving its integrity. You can run all tests and generate a report using the master script.
 
 1. Keep the FastAPI server running and open a **new terminal tab**.
 2. Navigate to the backend directory:
@@ -94,22 +94,32 @@ A³SC includes a massive 15-category validation suite proving its integrity. You
 
 ---
 
-### Step 4: Open the Frontend Dashboard (Analytics & Quick Tests)
+### Step 4: Start the Frontend Dashboard
 
-A³SC includes a web-based dashboard for Sprint Risk Analytics and Quick Code Smell Analysis. It is automatically served by the backend!
+CodeSage includes a sleek React-based web dashboard for Neural Auditing, Sprint Risk Analytics, and Terminal Streaming.
 
-1. Open your web browser.
-2. Navigate to: **[http://localhost:8000/dashboard/](http://localhost:8000/dashboard/)**
-3. **Usage:**
-   - **Log Sprints:** Record the number of smells and fixes across sprints.
+1. Open a **new terminal tab**.
+2. Navigate to the frontend directory:
+   ```bash
+   cd "path/to/compiler design project/frontend"
+   ```
+3. Install dependencies and start the dev server:
+   ```bash
+   npm install
+   npm run dev
+   ```
+4. Open your web browser and navigate to: **http://localhost:5173** (or the URL provided by Vite).
+5. **Usage:**
+   - **Sprint History:** Add, record, and view the number of smells and fixes across sprints.
    - **Analytics & Risk Prediction:** View visual charts showing your system's cumulative technical debt and risk predictions for future sprints.
-   - **Quick Smell Analysis:** Paste snippets of code into the textarea at the bottom to instantly detect code smells (Long Methods, God Classes, etc.).
+   - **Neural Auditor:** Paste snippets of code into the analyzer to instantly detect architectural code smells like Long Methods and God Classes, with full metric transparency.
+   - **Terminal:** View a live-streaming log of the backend Python server.
 
 ---
 
 ### Step 5: Using the VS Code Extension (IDE & Auto-Refactoring)
 
-The true power of A³SC is its editor integration via the VS Code extension, which provides inline code review and LLM-powered refactoring.
+The true power of CodeSage is its editor integration via the VS Code extension, which provides inline code review and LLM-powered refactoring.
 
 1. Open VS Code and navigate to the `vscode-extension` folder.
 2. Open a terminal in that folder and run:
@@ -125,7 +135,7 @@ The true power of A³SC is its editor integration via the VS Code extension, whi
 
 ## 🧪 The 15-Category Test Suite
 
-To ensure absolute reliability, A³SC implements a rigorous validation suite covering:
+To ensure absolute reliability, CodeSage implements a rigorous validation suite covering:
 
 1. **Compiler Core**: Lexical, Syntax, and AST integrity checks.
 2. **Feature Extraction Validation**: Verifies cyclomatic complexity, CBO, WMC accuracy.

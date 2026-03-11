@@ -9,7 +9,7 @@ This is the MVP approach — swap for TimescaleDB in production.
 import json
 import os
 from datetime import datetime
-from typing import Dict, List, Any
+from typing import Dict, List, Any, Optional
 from pathlib import Path
 
 _DATA_FILE = Path(__file__).parent / "sprint_data.json"
@@ -55,6 +55,30 @@ class SprintStore:
             "module": module,
         })
         self._save(data)
+
+    def update_latest_sprint(self, smells_delta: int, refactor_delta: int) -> Optional[str]:
+        """Update the most recent sprint with new smell/refactor deltas."""
+        data = self._load()
+        if not data.get("sprints"):
+            return None
+            
+        latest_sprint = data["sprints"][-1]
+        latest_sprint["smell_count"] = max(0, latest_sprint["smell_count"] + smells_delta)
+        latest_sprint["refactor_count"] = max(0, latest_sprint.get("refactor_count", 0) + refactor_delta)
+        
+        self._save(data)
+        return latest_sprint["sprint_id"]
+
+    def delete_sprint(self, sprint_id: str) -> bool:
+        """Delete a specific sprint by ID."""
+        data = self._load()
+        initial_count = len(data.get("sprints", []))
+        data["sprints"] = [s for s in data.get("sprints", []) if s["sprint_id"] != sprint_id]
+        
+        if len(data["sprints"]) < initial_count:
+            self._save(data)
+            return True
+        return False
 
     # ------------------------------------------------------------------
     # Read

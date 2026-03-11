@@ -29,7 +29,7 @@ export default function Sidebar() {
                 </div>
                 <div>
                     <h1 className="text-xl font-bold tracking-tight text-white drop-shadow-md">
-                        A³SC <span className="font-light text-cyber-primary">Core</span>
+                        CodeSage <span className="font-light text-cyber-primary">Core</span>
                     </h1>
                 </div>
             </div>

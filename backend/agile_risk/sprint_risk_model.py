@@ -63,7 +63,7 @@ class SprintRiskModel:
         current = smell_history[-1]
 
         # Predicted count next sprint
-        predicted = current + drift
+        predicted = max(current + drift, 0)
 
         # Variance: use std dev of deltas (captures process noise)
         if len(deltas) >= 2:

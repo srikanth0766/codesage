@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-A³SC CI/CD Smell Gate CLI.
+CodeSage CI/CD Smell Gate CLI.
 
 Usage:
     python scripts/smell_gate.py <file_or_directory> [--threshold 0.75] [--ci]
@@ -68,7 +68,7 @@ def analyze_file(file_path: Path, threshold: float) -> Dict:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="A³SC Smell Gate — CI/CD threshold checker"
+        description="CodeSage Smell Gate — CI/CD threshold checker"
     )
     parser.add_argument("path", help="File or directory to analyse")
     parser.add_argument(
@@ -86,7 +86,7 @@ def main():
         print(f"No Python files found at: {args.path}")
         sys.exit(0)
 
-    print(f"\n🔍 A³SC Smell Gate")
+    print(f"\n🔍 CodeSage Smell Gate")
     print(f"   Threshold : {args.threshold}")
     print(f"   Files     : {len(files)}\n")
 

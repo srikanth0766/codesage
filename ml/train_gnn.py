@@ -1,5 +1,5 @@
 """
-A³SC ML Training Stub — GNN Smell Classifier.
+CodeSage ML Training Stub — GNN Smell Classifier.
 
 This file documents the FULL ML training pipeline for when you are ready to
 replace the heuristic scorer in smell_api.py with a trained GNN.
@@ -149,7 +149,7 @@ IN_CHANNELS   = 7   # Number of features: loc, params, complexity, nesting, wmc,
 
 
 if __name__ == "__main__":
-    print("A³SC GNN Training Stub")
+    print("CodeSage GNN Training Stub")
     print("Uncomment the training code above and ensure you have:")
     print("  pip install torch torch-geometric pandas networkx")
     print("  ml/datasets/smell_dataset.csv (labeled smell data)")

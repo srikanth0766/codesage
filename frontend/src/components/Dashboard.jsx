@@ -28,14 +28,29 @@ export default function Dashboard({ mousePosition }) {
                 if (data.sprints.length >= 2) {
                     const hist = data.sprints.map(s => s.smell_count);
                     const refHist = data.sprints.map(s => s.refactor_count);
+
+                    const savedRisk = localStorage.getItem('codeSage_riskThreshold');
+                    const thresholdValue = savedRisk ? Number(savedRisk) : 10;
+
                     const riskRes = await fetch(`${BACKEND}/predict-sprint-risk`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ sprint_history: hist, refactor_history: refHist, threshold: 10 })
+                        body: JSON.stringify({ sprint_history: hist, refactor_history: refHist, threshold: thresholdValue })
                     });
                     if (riskRes.ok) {
-                        setRisk(await riskRes.json());
+                        const riskData = await riskRes.json();
+                        setRisk(riskData);
                     }
+                } else {
+                    const savedRisk = localStorage.getItem('codeSage_riskThreshold');
+                    const thresholdValue = savedRisk ? Number(savedRisk) : 10;
+                    setRisk({
+                        risk_probability: 0,
+                        predicted_smell_count: 0,
+                        threshold: thresholdValue,
+                        trend: 'stable',
+                        recommendation: "Insufficient data. Log at least 2 sprints to predict technical debt drift."
+                    });
                 }
             }
         } catch (e) {
@@ -45,7 +60,9 @@ export default function Dashboard({ mousePosition }) {
                 { sprint_id: 'Sprint-1', smell_count: 5, refactor_count: 2, module: 'demo' },
                 { sprint_id: 'Sprint-2', smell_count: 12, refactor_count: 6, module: 'demo' },
             ]);
-            setRisk({ risk_probability: 0.85, predicted_smell_count: 15, threshold: 10, trend: 'rapidly_increasing', recommendation: "CRITICAL ALERT: Refactor immediately." });
+            const savedRisk = localStorage.getItem('codeSage_riskThreshold');
+            const thresholdValue = savedRisk ? Number(savedRisk) : 10;
+            setRisk({ risk_probability: 0.85, predicted_smell_count: 15, threshold: thresholdValue, trend: 'rapidly_increasing', recommendation: "CRITICAL ALERT: Refactor immediately." });
         }
     };
 

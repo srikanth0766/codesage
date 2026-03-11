@@ -35,6 +35,10 @@ class OllamaProvider(LLMProvider):
         except Exception:
             return False
     
+    def generate(self, prompt: str) -> str:
+        """Public generate method used by RefactorAgent."""
+        return self._generate(prompt)
+
     def _generate(self, prompt: str, system: Optional[str] = None) -> str:
         """
         Generate response from Ollama.

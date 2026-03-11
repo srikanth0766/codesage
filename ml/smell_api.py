@@ -4,7 +4,7 @@ Heuristic ML Smell Classifier — Standalone FastAPI Microservice.
 Runs on port 8001. Takes extracted feature vectors and returns smell probabilities
 using sigmoid normalization over rule-based thresholds.
 
-This is the MVP version of the GNN-based smell classifier from the A³SC blueprint.
+This is the MVP version of the GNN-based smell classifier from the CodeSage blueprint.
 
 # ─── ML TRAINING NOTE ──────────────────────────────────────────────────────────
 # In production, replace `_heuristic_score()` with:
@@ -84,7 +84,7 @@ def _heuristic_score(features: Dict[str, Any]) -> Dict[str, float]:
 # ─── FastAPI App ──────────────────────────────────────────────────────────────
 
 app = FastAPI(
-    title="A³SC ML Smell Service",
+    title="CodeSage ML Smell Service",
     description=(
         "Heuristic smell probability scorer (MVP). "
         "Replace _heuristic_score() with a trained GNN for production accuracy."
@@ -129,7 +129,7 @@ async def predict_smell(request: SmellPredictRequest):
     """
     Predict smell probabilities from feature vector.
 
-    In the full A³SC, this endpoint receives AST graph JSON and runs it through
+    In the full CodeSage, this endpoint receives AST graph JSON and runs it through
     a trained GCN. In this MVP it uses threshold-based sigmoid scoring.
     """
     if not request.features:

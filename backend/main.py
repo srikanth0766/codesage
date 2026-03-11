@@ -1,5 +1,5 @@
 """
-FastAPI backend for the A³SC (Agile-Aware Agentic Smell-Aware Compiler).
+FastAPI backend for the CodeSage (Agile-Aware Agentic Smell-Aware Compiler).
 
 Endpoints:
   POST /predict          – runtime error prediction (CodeBERT)
@@ -25,6 +25,16 @@ from chat_handler import ChatHandler, ChatContext, ChatMessage
 from analyzers.smell_detector import SmellDetector
 import uvicorn
 import os
+import datetime
+
+def log_action(action: str):
+    """Write semantic logs to action.log for the UI Activity Feed."""
+    try:
+        timestamp = datetime.datetime.now().strftime("%I:%M %p")
+        with open("action.log", "a") as f:
+            f.write(f"[{timestamp}] {action}\n")
+    except Exception:
+        pass
 
 
 # Global instances (loaded once at startup)
@@ -161,6 +171,8 @@ async def predict(request: PredictRequest):
         # Get prediction from model
         error_type, confidence = model.predict(request.code)
         
+        log_action(f"Predicted error risk ({error_type}: {confidence*100:.1f}%)")
+        
         return PredictResponse(
             error_type=error_type,
             confidence=round(confidence, 4)
@@ -215,6 +227,10 @@ async def review_code(request: ReviewRequest):
             smells=result.smells,
             summary=result.summary
         )
+        
+        log_action(f"Comprehensive code review completed ({len(result.smells)} smells)")
+        
+        return response
     
     except Exception as e:
         raise HTTPException(
@@ -304,12 +320,17 @@ async def analyze_smells(request: SmellRequest):
         smells = smell_detector.detect_to_dict(request.code)
         high_conf = [s for s in smells if s["confidence"] > 0.75]
         score = max((s["confidence"] for s in smells), default=0.0)
+        
+        log_action(f"Analyzed {request.language} codebase ({len(smells)} smells detected)")
+        
         return SmellResponse(
             smells=smells,
             smell_count=len(smells),
             high_confidence_count=len(high_conf),
             overall_smell_score=round(score, 3),
         )
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Smell detection error: {e}")
 
@@ -350,6 +371,10 @@ async def refactor_code(request: RefactorRequest):
             smell=request.smell,
             confidence=request.confidence
         )
+        if result.get("success"):
+            log_action(f"Successfully auto-refactored '{request.smell}' smell")
+        else:
+            log_action(f"Failed to auto-refactor '{request.smell}' (AST invalid)")
         return RefactorResponse(**result)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Refactoring error: {e}")
@@ -398,6 +423,25 @@ async def log_sprint(request: SprintLogRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+class SprintUpdateInfo(BaseModel):
+    smells_delta: int = 0
+    refactor_delta: int = 0
+
+@app.post("/update-latest-sprint")
+async def update_latest_sprint(request: SprintUpdateInfo):
+    """Update the most recent logged sprint with delta metrics from the Neural Auditor."""
+    try:
+        from agile_risk.sprint_store import SprintStore
+        store = SprintStore()
+        updated_sprint_id = store.update_latest_sprint(
+            smells_delta=request.smells_delta,
+            refactor_delta=request.refactor_delta
+        )
+        if not updated_sprint_id:
+            return {"status": "ignored", "message": "No sprints exist to update."}
+        return {"status": "updated", "sprint_id": updated_sprint_id}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/predict-sprint-risk", response_model=SprintRiskResponse)
 async def predict_sprint_risk(request: SprintRiskRequest):
@@ -428,13 +472,49 @@ async def sprint_analytics():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# SERVE DASHBOARD (static)
-# ─────────────────────────────────────────────────────────────────────────────
+@app.delete("/sprints/{sprint_id}")
+async def delete_sprint(sprint_id: str):
+    """Delete a specific sprint from the history log."""
+    try:
+        from agile_risk.sprint_store import SprintStore
+        store = SprintStore()
+        success = store.delete_sprint(sprint_id)
+        if not success:
+            raise HTTPException(status_code=404, detail="Sprint not found")
+        return {"status": "deleted", "sprint_id": sprint_id}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
-_dashboard_path = Path(__file__).parent.parent / "dashboard"
-if _dashboard_path.exists():
-    app.mount("/dashboard", StaticFiles(directory=str(_dashboard_path), html=True), name="dashboard")
+
+@app.post("/logs/reset")
+async def reset_logs():
+    """Clear the action.log file."""
+    try:
+        log_path = Path("action.log")
+        with open(log_path, "w") as f:
+            f.write("")
+        return {"status": "success", "message": "Logs cleared"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/logs")
+async def get_logs():
+    """Return the last 50 lines of the action.log file."""
+    try:
+        log_path = Path("action.log")
+        if not log_path.exists():
+            return {"logs": ["System initialized. Awaiting telemetry..."]}
+        
+        with open(log_path, "r") as f:
+            lines = f.readlines()
+            
+        return {"logs": lines[-50:]}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+        
+        
+
 
 
 if __name__ == "__main__":

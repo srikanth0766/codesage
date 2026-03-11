@@ -10,7 +10,7 @@ Extracts structural metrics from Python AST that are used by the smell detector:
   - WMC (Weighted Methods per Class)
   - CBO (Coupling Between Objects)
 
-These metrics map directly to the A³SC blueprint specification.
+These metrics map directly to the CodeSage blueprint specification.
 """
 
 import ast
@@ -51,6 +51,7 @@ class FileFeatures:
     """Features extracted from the whole file."""
     classes: List[ClassFeatures] = field(default_factory=list)
     standalone_functions: List[MethodFeatures] = field(default_factory=list)
+    top_level_statements: List[Dict[str, Any]] = field(default_factory=list)
     total_loc: int = 0
     total_methods: int = 0
     imports: List[str] = field(default_factory=list)
@@ -75,6 +76,7 @@ class FileFeatures:
                 for c in self.classes
             ],
             "standalone_functions": [_method_to_dict(f) for f in self.standalone_functions],
+            "top_level_statements": self.top_level_statements,
         }
 
 
@@ -132,6 +134,14 @@ class FeatureExtractor:
                 fn_feat = self._extract_function(node, lines, imported_names, class_methods=set())
                 file_features.standalone_functions.append(fn_feat)
                 file_features.total_methods += 1
+            elif isinstance(node, (ast.Expr, ast.Assign, ast.Call)):
+                # Capture top-level expressions for semantic/nonsense checking
+                file_features.top_level_statements.append({
+                    "type": type(node).__name__,
+                    "line": node.lineno,
+                    "col": node.col_offset,
+                    "ast_node": node
+                })
 
         file_features.total_loc = sum(1 for l in lines if l.strip())
         return file_features
@@ -196,7 +206,7 @@ class FeatureExtractor:
 
     def _extract_function(
         self,
-        node: ast.FunctionDef,
+        node: Any,  # ast.FunctionDef or ast.AsyncFunctionDef
         lines: List[str],
         ext_names: set,
         class_methods: set

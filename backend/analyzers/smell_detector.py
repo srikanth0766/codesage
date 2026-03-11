@@ -17,6 +17,7 @@ Integrates with the existing CodeReviewAgent via agent_orchestrator.py.
 """
 
 import math
+import ast
 from typing import List, Dict, Any, Optional
 from dataclasses import dataclass
 from analyzers.feature_extractor import FeatureExtractor, FileFeatures, MethodFeatures, ClassFeatures
@@ -31,6 +32,8 @@ THRESHOLDS = {
     "large_parameter_list":  {"params": 5},
     "deep_nesting":          {"depth": 3},
     "high_complexity":       {"complexity": 10},
+    "useless_statement":     {"min_chars": 1},
+    "redundant_semicolon":   {"count": 0},
 }
 
 
@@ -80,7 +83,7 @@ class SmellDetector:
         """
         features = self._extractor.extract(code)
         if features is None:
-            return []
+            raise ValueError("Invalid Python syntax")
 
         smells: List[SmellResult] = []
 
@@ -93,6 +96,9 @@ class SmellDetector:
             smells.extend(self._check_class_smells(cls))
             for method in cls.methods:
                 smells.extend(self._check_method_smells(method, parent_name=cls.name))
+
+        # Check top-level statements for nonsense/useless code
+        smells.extend(self._check_file_level_smells(code, features))
 
         # Sort by confidence descending
         smells.sort(key=lambda s: s.confidence, reverse=True)
@@ -222,6 +228,53 @@ class SmellDetector:
                 refactor_hint="Decompose complex methods and distribute responsibilities across smaller classes.",
                 severity="error",
             ))
+
+        return smells
+
+
+    # ─── File-Level Checks ───────────────────────────────────────────────────
+
+    def _check_file_level_smells(self, code: str, features: FileFeatures) -> List[SmellResult]:
+        smells = []
+        
+        # 1. Useless Top-level Statements (Nonsense code)
+        for stmt in features.top_level_statements:
+            node = stmt["ast_node"]
+            if isinstance(node, ast.Expr):
+                val = node.value
+                # If it's just a Name or Constant at the top level, it's usually nonsense/useless
+                if isinstance(val, (ast.Name, ast.Constant)):
+                    smells.append(SmellResult(
+                        smell="useless_statement",
+                        display_name="Useless Top-level Expression",
+                        confidence=0.9,
+                        location="module",
+                        start_line=node.lineno,
+                        end_line=node.end_lineno or node.lineno,
+                        metric_value=type(val).__name__,
+                        threshold=1,
+                        refactor_hint="Remove this snippet; it has no effect and looks like nonsense/leftover code.",
+                        severity="warning"
+                    ))
+
+        # 2. Redundant Semicolons
+        lines = code.splitlines()
+        for i, line in enumerate(lines, 1):
+            if ";" in line:
+                # Basic check: is it outside a string? (simplified)
+                if line.strip().endswith(";"):
+                    smells.append(SmellResult(
+                        smell="redundant_semicolon",
+                        display_name="Redundant Semicolon",
+                        confidence=0.8,
+                        location=f"Line {i}",
+                        start_line=i,
+                        end_line=i,
+                        metric_value=";",
+                        threshold=0,
+                        refactor_hint="Semicolons are not required in Python. Remove it for cleaner style.",
+                        severity="info"
+                    ))
 
         return smells
 

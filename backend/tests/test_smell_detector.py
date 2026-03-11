@@ -147,9 +147,9 @@ def test_line_numbers_valid(smell_detector, long_method_code):
         assert s.start_line >= 1
         assert s.end_line >= s.start_line
 
-def test_invalid_code_returns_empty(smell_detector):
-    smells = smell_detector.detect("def broken(:\n    pass")
-    assert smells == []
+def test_invalid_code_raises_error(smell_detector):
+    with pytest.raises(ValueError, match="Invalid Python syntax"):
+        smell_detector.detect("def broken(:\n    pass")
 
 def test_empty_code_returns_empty(smell_detector):
     smells = smell_detector.detect("")
